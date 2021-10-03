@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "model_db"
+version = "0.1.0"
+description = ""
+authors = ["xxx <test@test.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.68.1"
+uvicorn = "^0.15.0"
+SQLAlchemy = "^1.4.25"
+psycopg2-binary = "^2.9.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^3.9.2"
+mypy = "^0.910"
+pytest-cov = "^2.12.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
