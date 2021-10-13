@@ -1,15 +1,15 @@
-from typing import Dict, Optional, Union
+from logging import getLogger
 from fastapi import FastAPI
 
-app = FastAPI()
+from src.api.api import router
+from src.core.config import APIConfigurations
 
+logger = getLogger(__name__)
 
-@app.get("/")
-def read_root() -> Dict[str, str]:
-    return {"Hello": "World"}
+app = FastAPI(
+    title=APIConfigurations.title,
+    description=APIConfigurations.description,
+    version=APIConfigurations.version
+)
 
-
-@app.get("/items/{items_id}")
-def read_item(item_id: int,
-              q: Optional[str] = None) -> Dict[str, Union[int, str, None]]:
-    return {"item_id": item_id, "q": q}
+app.include_router(router, prefix=f"/{APIConfigurations.version}")
